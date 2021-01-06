@@ -1,0 +1,11 @@
+.card{
+    border-radius: 1.25rem !important;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #aaa;
+}
+
+#empresas td, #empresas th {
+    border: 1.5px solid #555;
+    padding: 8px;
+}

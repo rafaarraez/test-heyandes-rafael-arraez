@@ -1,0 +1,17 @@
+{
+  "name": "firebase",
+  "author": "rafaarraez",
+  "description": "Bulk Upload To Firebase",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "12"
+  },
+  "main": "upload.js",
+  "dependencies": {
+    "firebase-admin": "^9.4.2",
+    "firebase-functions": "^3.11.0"
+  },
+  "private": true
+}

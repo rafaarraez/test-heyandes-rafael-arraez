@@ -3,8 +3,7 @@
         <div class="col-12 col-md-6 mt-2 mt-md-0">
             <div class="card">
                 <div class="card-body">
-                    <h2>Empresa Mas Venta:</h2>
-                    <h2>{{ !empresaMasVentas ? 'Cargando...' : empresaMasVentas.nameAgency}} </h2>
+                    <h4>Empresa Mas Venta: {{ !empresaMasVentas ? 'Cargando...' : empresaMasVentas.nameAgency}} </h4>
                     <h1>{{ empresaMasVentas?.finalPrice | currency }}</h1>
                 </div>
             </div>
@@ -13,8 +12,8 @@
         <div class="col-12 col-md-6 mt-2 mt-md-0">
             <div class="card">
                 <div class="card-body">
-                    <h2>Mes mas venta</h2>
-                    <h1>ENERO</h1>
+                    <h4>Mes mas venta {{ !empresaMasVentas ? 'Cargando...' : ''}}</h4>
+                    <h1>{{ getMonth(mesMasVentas?.mes) }}</h1>
                 </div>
             </div>
         </div>
@@ -23,21 +22,27 @@
         <table id="empresas" class="table">
             <thead>
                 <tr class="table-active">
-                    <th (click)="sortByAgency()" scope="col">Nombre Empresa {{asc ? 'si' : 'no'}}</th>
-                    <th scope="col">Total de Ventas</th>
+                    <th (click)="sortByAgency('agency')" scope="col">
+                        Nombre Empresa <span *ngIf="sortAgency;else templateName">{{asc ? '&#9650;' : '&#9660;'}}</span>
+                        <ng-template #templateName><i class="fa-sort fas"></i></ng-template>
+                    </th>
+                    <th (click)="sortByAgency('ventas')" scope="col">Total de Ventas <span
+                            *ngIf="sortVentas;else templateName">{{asc ? '&#9650;' : '&#9660;'}}</span>
+                        <ng-template #templateName><i class="fa-sort fas"></i></ng-template>
+                    </th>
                     <th scope="col">Comisión</th>
                     <th scope="col">Detalles</th>
                 </tr>
             </thead>
             <tbody>
+                
                 <tr *ngFor="let empresa of ventas">
-                    <th scope="row">{{empresa.nameAgency}}</th>
-                    <td>{{empresa.finalPrice | currency}}</td>
-                    <td>{{empresa.finalPrice * 0.25 | currency}}</td>
-                    <td><a [routerLink]="['/empresa/' + empresa.nameAgency]">Ver Detalles</a></td>
+                    <th scope="row">{{empresa?.nameAgency}}</th>
+                    <td>{{empresa?.finalPrice | currency}}</td>
+                    <td>{{empresa?.finalPrice * 0.25 | currency}}</td>
+                    <td><a [routerLink]="['/empresa/' + empresa?.nameAgency]">Ver Detalles</a></td>
                 </tr>
             </tbody>
         </table>
     </div>
-
 </div>

@@ -9,3 +9,11 @@
     border: 1.5px solid #555;
     padding: 8px;
 }
+
+table{
+	background: #fff;
+}
+
+table thead {
+    background: #ddd;
+}

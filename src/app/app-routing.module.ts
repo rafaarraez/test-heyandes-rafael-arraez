@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/empresas', pathMatch: 'full' },
   { path: 'empresas', component: EmpresasComponent },
   { path: 'empresa/:nombre_empresa', component: EmpresaComponent },
+  { path: "**", redirectTo: "/empresas" },
 ];
 
 @NgModule({

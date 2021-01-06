@@ -3,8 +3,9 @@
         <div class="col-12 col-md-6 mt-2 mt-md-0">
             <div class="card">
                 <div class="card-body">
-                    <h2>Empresa Mas Venta</h2>
-                    <h1>$840.000</h1>
+                    <h2>Empresa Mas Venta:</h2>
+                    <h2>{{ !empresaMasVentas ? 'Cargando...' : empresaMasVentas.nameAgency}} </h2>
+                    <h1>{{ empresaMasVentas?.finalPrice | currency }}</h1>
                 </div>
             </div>
         </div>
@@ -22,21 +23,21 @@
         <table id="empresas" class="table">
             <thead>
                 <tr class="table-active">
-                    <th scope="col">Nombre Empresa</th>
+                    <th (click)="sortByAgency()" scope="col">Nombre Empresa {{asc ? 'si' : 'no'}}</th>
                     <th scope="col">Total de Ventas</th>
                     <th scope="col">Comisión</th>
                     <th scope="col">Detalles</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let empresa of empresas; index as i">
+                <tr *ngFor="let empresa of ventas">
                     <th scope="row">{{empresa.nameAgency}}</th>
-                    <td>{{empresa.finalPrice}}</td>
-                    <td>{{empresa.finalPrice}}</td>
+                    <td>{{empresa.finalPrice | currency}}</td>
+                    <td>{{empresa.finalPrice * 0.25 | currency}}</td>
                     <td><a [routerLink]="['/empresa/' + empresa.nameAgency]">Ver Detalles</a></td>
                 </tr>
             </tbody>
         </table>
     </div>
-    
+
 </div>

@@ -1,62 +1,31 @@
-<!-- <div class="grd-row-col-4">
-        <div class="cats_container">
-          <div class="media" *ngFor="let empresa of empresas">
-            <div class="media-figure">
-              <img [src]="empresa.data.url">
-            </div>
-            <div class="media-body">
-              <p>{{empresa.data.nombre}}</p>
-              <div class="btn--group">
-                <button class="btn--green btn--s btn1">Editar</button>
-                <button class="btn--red btn--s btn2">Eliminar</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
 <div class="container mt-5">
-  <ol class="breadcrumb mt-n3 mb-4">
-    <li class="breadcrumb-item">
-      <a routerLink="/empresas">Empresas</a>
-    </li>
-    <li aria-current="page" class="breadcrumb-item active">Nombre de Empresa</li>
-  </ol>
+	<ol class="breadcrumb mt-n3 mb-4">
+		<li class="breadcrumb-item">
+			<a routerLink="/empresas">Empresas</a>
+		</li>
+		<li aria-current="page" class="breadcrumb-item active">{{ nameAgency }}</li>
+	</ol>
 
-  <div>
-    <table id="empresas" class="table">
-        <thead>
-            <tr class="table-active">
-                <th scope="col">Nombre cliente</th>
-                <th scope="col">Personas</th>
-                <th scope="col">Día</th>
-                <th scope="col">Hora</th>
-                <th scope="col">Valor de Venta</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>Otto</td>
-                <td><a routerLink="/empresa/algo">Ver Detalles</a></td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>Otto</td>
-                <td><a routerLink="/empresa/algo">Ver Detalles</a></td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>Otto</td>
-                <td><a routerLink="/empresa/algo">Ver Detalles</a></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+	<div>
+		<table id="empresas" class="table">
+			<thead>
+				<tr class="table-active">
+					<th scope="col">Nombre cliente</th>
+					<th scope="col">Personas</th>
+					<th scope="col">Día</th>
+					<th scope="col">Hora</th>
+					<th scope="col">Valor de Venta</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let venta of ventas">
+					<th>{{venta.name}}</th>
+					<td>{{ venta.persons }}</td>
+					<td>{{ venta.day | date: 'dd/MM/yyyy'}}</td>
+					<td>{{ venta.hour }}</td>
+					<td>{{ venta.finalPrice | currency }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>

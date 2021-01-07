@@ -10,3 +10,9 @@ table{
 table thead {
     background: #ddd;
 }
+
+td a {
+    background: #dcdcdc;
+    padding: 0.20rem;
+    color: #000;
+}

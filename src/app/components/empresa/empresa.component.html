@@ -37,7 +37,7 @@
 				<tr *ngFor="let venta of ventas">
 					<th>{{venta.name}}</th>
 					<td>{{ venta.persons }}</td>
-					<td>{{ venta.day | date: 'dd/MM/yyyy'}}</td>
+					<td>{{ venta.day ? (venta.day | date: 'dd/MM/yyyy') : (venta.dayFrom | date: 'dd/MM/yyyy')}}</td>
 					<td>{{ venta.hour }}</td>
 					<td>{{ venta.finalPrice | currency }}</td>
 				</tr>

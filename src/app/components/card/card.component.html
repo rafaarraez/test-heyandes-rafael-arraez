@@ -1,7 +1,6 @@
 <div class="card">
     <div class="card-body">
         <h4>{{text}}</h4>
-        <h1>{{ total | currency }}</h1>
-        <h1>{{ month }}</h1>
+        <h1>{{ total ? (total | currency) : month }}</h1>
     </div>
 </div>

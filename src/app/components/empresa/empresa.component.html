@@ -1,12 +1,13 @@
 <div class="container mt-5">
-	<ol class="breadcrumb mt-n3 mb-4">
-		<li class="breadcrumb-item">
+	<ul class="breadcrumb">
+		<li>
 			<a routerLink="/empresas">Empresas</a>
 		</li>
-		<li aria-current="page" class="breadcrumb-item active">{{ nameAgency }}</li>
-	</ol>
+		<li>{{ nameAgency }}</li>
+	  </ul>
+	  
 
-	<div>
+	<div class="table-responsive">
 		<table id="empresas" class="table">
 			<thead>
 				<tr class="table-active">
@@ -19,14 +20,15 @@
 						Personas <span *ngIf="sortPersonas;else templateName">{{asc ? '&#9650;' : '&#9660;'}}</span>
 						<ng-template #templateName><i class="fa-sort fas"></i></ng-template>
 					</th>
-					<th scope="col">
-						Día
+					<th (click)="sortBy('dia')" scope="col">
+						Día <span *ngIf="sortDias;else templateName">{{asc ? '&#9650;' : '&#9660;'}}</span>
+						<ng-template #templateName><i class="fa-sort fas"></i></ng-template>
 					</th>
 					<th scope="col">
 						Hora
 					</th>
 					<th (click)="sortBy('ventas')" scope="col">
-						Valor de Venta <span *ngIf="sorVentas;else templateName">{{asc ? '&#9650;' : '&#9660;'}}</span>
+						Valor de Venta <span *ngIf="sortVentas;else templateName">{{asc ? '&#9650;' : '&#9660;'}}</span>
 						<ng-template #templateName><i class="fa-sort fas"></i></ng-template>
 					</th>
 				</tr>

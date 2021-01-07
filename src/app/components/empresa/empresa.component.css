@@ -10,3 +10,25 @@ table{
 table thead {
     background: #ddd;
 }
+ul.breadcrumb {
+    padding: 1rem 0;
+    list-style: none;
+    font-weight: 600;
+  }
+  ul.breadcrumb li {
+    display: inline;
+    font-size: 1.25rem;
+
+  }
+  ul.breadcrumb li+li:before {
+    padding: 0.5rem;
+    color: black;
+    content: ">";
+  }
+  ul.breadcrumb li a {
+    color: #0275d8;
+  }
+  ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+  }

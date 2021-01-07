@@ -10,12 +10,13 @@ import { Sale } from "../../models/sale.model";
 })
 export class EmpresaComponent implements OnInit {
 
-	public ventas: Sale[] 		 = [];
+	public ventas: Sale[] = [];
 	public nameAgency: string;
-	public asc: boolean 		 = false;
+	public asc: boolean = false;
 	public sortClientes: boolean = false;
 	public sortPersonas: boolean = false;
-	public sorVentas: boolean    = false;
+	public sortVentas: boolean = false;
+	public sortDias: boolean = false;
 
 	constructor(
 		private route: ActivatedRoute,
@@ -37,8 +38,6 @@ export class EmpresaComponent implements OnInit {
 					);
 				}
 			});
-			console.log(this.ventas);
-
 		});
 	}
 
@@ -46,7 +45,8 @@ export class EmpresaComponent implements OnInit {
 		if (order === 'clientes') {
 			this.sortClientes = true;
 			this.sortPersonas = false;
-			this.sorVentas 	  = false;
+			this.sortVentas = false;
+			this.sortDias = false;
 			if (!this.asc) {
 				this.ventas.sort((a, b) => a.name.localeCompare(b.name));
 				this.asc = true;
@@ -54,11 +54,11 @@ export class EmpresaComponent implements OnInit {
 				this.ventas.sort((a, b) => b.name.localeCompare(a.name));
 				this.asc = false;
 			}
-
-		} else if(order === 'personas') {
+		} else if (order === 'personas') {
 			this.sortPersonas = true;
 			this.sortClientes = false;
-			this.sorVentas 	  = false;
+			this.sortVentas = false;
+			this.sortDias = false;
 			if (!this.asc) {
 				this.ventas.sort((a, b) => a.persons - b.persons);
 				this.asc = true;
@@ -66,15 +66,36 @@ export class EmpresaComponent implements OnInit {
 				this.ventas.sort((a, b) => b.persons - a.persons);
 				this.asc = false;
 			}
-		}  else if(order === 'ventas') {
-			this.sorVentas 	  = true;
+		} else if (order === 'ventas') {
+			this.sortVentas = true;
 			this.sortPersonas = false;
 			this.sortClientes = false;
+			this.sortDias = false;
 			if (!this.asc) {
 				this.ventas.sort((a, b) => a.finalPrice - b.finalPrice);
 				this.asc = true;
 			} else {
 				this.ventas.sort((a, b) => b.finalPrice - a.finalPrice);
+				this.asc = false;
+			}
+		} else if (order === 'dia') {
+			this.sortDias = true;
+			this.sortVentas = false;
+			this.sortPersonas = false;
+			this.sortClientes = false;
+			if (!this.asc) {
+				this.ventas.sort((a, b) => {
+					var c = new Date(a.day);
+					var d = new Date(b.day);
+					return c > d ? 1 : -1;
+				});
+				this.asc = true;
+			} else {
+				this.ventas.sort((a, b) => {
+					var c = new Date(a.day);
+					var d = new Date(b.day);
+					return c < d ? 1 : -1;  
+				});
 				this.asc = false;
 			}
 		}

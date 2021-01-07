@@ -8,13 +8,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { EmpresasComponent } from './components/empresas/empresas.component';
 import { EmpresaComponent } from './components/empresa/empresa.component';
 import { HeaderComponent } from './components/header/header.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmpresasComponent,
     EmpresaComponent,
-    HeaderComponent
+    HeaderComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,

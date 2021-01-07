@@ -1,25 +1,15 @@
 <div class="container mt-5">
+    {{!empresaMasVentas ? 'Cargando...' : ''}}
     <div class="row">
         <div class="col-12 col-md-6 mt-2 mt-md-0">
-            <div class="card">
-                <div class="card-body">
-                    <h4>Empresa Mas Venta: {{ !empresaMasVentas ? 'Cargando...' : empresaMasVentas.nameAgency}} </h4>
-                    <h1>{{ empresaMasVentas?.finalPrice | currency }}</h1>
-                </div>
-            </div>
+            <app-card *ngIf="empresaMasVentas;" [text]="'Empresa mas ventas: ' + empresaMasVentas?.nameAgency" [total]="empresaMasVentas?.finalPrice"></app-card>
         </div>
-
         <div class="col-12 col-md-6 mt-2 mt-md-0">
-            <div class="card">
-                <div class="card-body">
-                    <h4>Mes mas venta {{ !empresaMasVentas ? 'Cargando...' : ''}}</h4>
-                    <h1>{{ getMonth(mesMasVentas?.mes) }}</h1>
-                </div>
-            </div>
+            <app-card *ngIf="mesMasVentas;" [text]="'MES MAS VENTAS'" [month]="getMonth(mesMasVentas.mes)"></app-card>
         </div>
     </div>
-    <div class="mt-5">
-        <table id="empresas" class="table">
+    <div class="mt-5 table-responsive">
+        <table id="empresas" *ngIf="empresaMasVentas;" class="table">
             <thead>
                 <tr class="table-active">
                     <th (click)="sortByAgency('agency')" scope="col">
@@ -35,7 +25,6 @@
                 </tr>
             </thead>
             <tbody>
-                
                 <tr *ngFor="let empresa of ventas">
                     <th scope="row">{{empresa?.nameAgency}}</th>
                     <td>{{empresa?.finalPrice | currency}}</td>

@@ -12,7 +12,7 @@ export class EmpresasComponent implements OnInit {
 
 	public empresas: Sale[] = [];
 	public ventas: Sale[] = [];
-	public mesMasVentas: any = {};
+	public mesMasVentas: any = null;
 	public empresaMasVentas: Sale = null;
 	public asc: boolean = false;
 	public sortVentas: boolean = false;
@@ -76,9 +76,6 @@ export class EmpresasComponent implements OnInit {
 			}, {});
 
 			this.mesMasVentas = Object.values(resultado).reduce((prev: Sale, current: Sale) => prev.finalPrice > current.finalPrice ? prev : current);
-			console.log(this.mesMasVentas.mes);
-			console.log(resultado);
-			
 		});
 	}
 

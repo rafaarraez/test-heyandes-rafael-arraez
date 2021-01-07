@@ -1,0 +1,6 @@
+.card{
+    border-radius: 1.25rem !important;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #aaa;
+}

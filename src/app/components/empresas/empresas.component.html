@@ -28,7 +28,7 @@
                 <tr *ngFor="let empresa of ventas">
                     <th scope="row">{{empresa?.nameAgency}}</th>
                     <td>{{empresa?.finalPrice | currency}}</td>
-                    <td>{{empresa?.finalPrice * 0.25 | currency}}</td>
+                    <td>{{empresa?.finalPrice * 0.025 | currency}}</td>
                     <td><a [routerLink]="['/empresa/' + empresa?.nameAgency]">Ver Detalles</a></td>
                 </tr>
             </tbody>
